@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kiernan DiMeglio | Projects & More</title>
 
-  <!-- Theme Preference: default to light -->
+  <!-- Theme Preference -->
   <script>
     (function () {
       const theme = localStorage.getItem("theme");
@@ -26,7 +26,10 @@
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: inherit;
+    }
     .skip-link {
       position: absolute;
       left: -999px;
@@ -48,7 +51,7 @@
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="transition-colors duration-300">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Header -->
@@ -106,10 +109,6 @@
           <i data-feather="mail"></i>
           <a class="text-blue-600 hover:underline text-sm" href="mailto:krd2ad@virginia.edu">Email Me</a>
         </li>
-        <li class="flex items-center gap-2 flex-wrap">
-          👁️
-          <img src="https://visitor-badge.laobi.icu/badge?page_id=krd2ad.LandingPage" alt="visitor badge" class="h-4 inline" />
-        </li>
       </ul>
     </section>
 
@@ -120,11 +119,13 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="text-center text-sm text-gray-500 dark:text-gray-400 py-8">
-    © 2025 Kiernan DiMeglio • More tools and insights on the way
+    © 2025 Kiernan DiMeglio • More tools and insights on the way<br />
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=krd2ad.LandingPage" alt="visitor badge" class="mx-auto mt-2 h-4" />
   </footer>
 
-  <!-- JS -->
+  <!-- Scripts -->
   <script>
     AOS.init({ duration: 800, once: true });
     feather.replace();
@@ -182,8 +183,8 @@
       }
     };
 
-    const saved = localStorage.getItem("theme");
-    setTheme(saved === "dark" ? "dark" : "light");
+    const stored = localStorage.getItem("theme");
+    setTheme(stored === "dark" ? "dark" : "light");
 
     toggle.addEventListener("click", () => {
       const isDark = html.classList.contains("dark");
