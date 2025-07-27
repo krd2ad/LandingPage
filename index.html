@@ -1,48 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kiernan DiMeglio | Projects & More</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS for animation -->
+  <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <style>
     body { font-family: 'Inter', sans-serif; }
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 1rem;
+      padding: 0.5rem;
+      background: #2563eb;
+      color: white;
+      z-index: 100;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="bg-gray-900 text-white py-10 text-center">
-    <h1 class="text-3xl font-bold">Kiernan DiMeglio</h1>
-    <p class="mt-2 text-gray-300">Explore my work, connect with me, and see what I’m reading.</p>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Kiernan DiMeglio</h1>
+      <button id="toggleDark" class="bg-gray-200 dark:bg-gray-700 text-sm px-3 py-1 rounded focus:outline-none focus:ring">
+        Toggle Dark Mode
+      </button>
+    </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Main Content -->
+  <main id="main" class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
     <!-- Projects -->
-    <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up">
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" tabindex="0">
       <h2 class="text-xl font-semibold mb-4">🛠️ Projects</h2>
-      <ul class="space-y-4">
-        <li>
+      <div class="space-y-4">
+        <div class="p-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <h3 class="font-medium text-lg">Task Website</h3>
-          <p class="text-sm text-gray-600">A task-tracking web app focused on speed and clarity.</p>
-          <a class="text-blue-600 hover:underline text-sm" href="https://tasks.kiernandimeglio.com" target="_blank">Launch →</a>
-        </li>
-        <li>
+          <p class="text-sm text-gray-600 dark:text-gray-300">A task-tracking web app focused on speed and clarity.</p>
+          <a href="https://tasks.kiernandimeglio.com" target="_blank"
+             class="inline-block mt-2 text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm transition">
+             Launch →
+          </a>
+        </div>
+        <div class="p-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <h3 class="font-medium text-lg">Project 2</h3>
-          <p class="text-sm text-gray-500">Coming soon: A new productivity experiment.</p>
-        </li>
-        <li>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Coming soon: A new productivity experiment.</p>
+        </div>
+        <div class="p-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <h3 class="font-medium text-lg">Project 3</h3>
-          <p class="text-sm text-gray-500">A creative tool in stealth. Check back soon.</p>
-        </li>
-      </ul>
+          <p class="text-sm text-gray-500 dark:text-gray-400">A creative tool in stealth. Check back soon.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Links -->
-    <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100" tabindex="0">
       <h2 class="text-xl font-semibold mb-4">🔗 Links</h2>
       <ul class="space-y-4">
         <li>
@@ -60,36 +89,72 @@
       </ul>
     </section>
 
-    <!-- Reading -->
-    <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
+    <!-- Reading (Dynamic) -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200" tabindex="0">
       <h2 class="text-xl font-semibold mb-4">📚 What I’m Reading</h2>
-      <ul id="reading-list" class="space-y-4">
-        <!-- Dynamically filled by JS -->
-      </ul>
+      <ul id="reading-list" class="space-y-4"></ul>
     </section>
   </main>
 
-  <footer class="text-center text-sm text-gray-500 py-8">
+  <footer class="text-center text-sm text-gray-500 dark:text-gray-400 py-8">
     © 2025 Kiernan DiMeglio • More tools and insights on the way
   </footer>
 
+  <!-- AOS Init -->
   <script>
     AOS.init({ duration: 800, once: true });
+  </script>
 
-    // Load reading list from articles.json
+  <!-- Article Loader -->
+  <script>
     fetch('articles.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('reading-list');
         data.forEach(article => {
-          container.innerHTML += `
-            <li>
-              <h3 class="text-lg font-medium">${article.title}</h3>
-              <p class="text-sm text-gray-600">${article.desc}</p>
-              <a class="text-blue-600 hover:underline text-sm" href="${article.url}" target="_blank">Read →</a>
-            </li>`;
+          const li = document.createElement('li');
+          li.className = "p-4 rounded-lg border border-gray-200 dark:border-gray-700";
+          li.innerHTML = `
+            <h3 class="text-lg font-medium">${article.title}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">${article.desc}</p>
+            <a class="text-blue-600 hover:underline text-sm" href="${article.url}" target="_blank">Read →</a>`;
+          container.appendChild(li);
         });
       });
+  </script>
+
+  <!-- Dark Mode Toggle & Keyboard Shortcut -->
+  <script>
+    const toggle = document.getElementById("toggleDark");
+    const root = document.documentElement;
+
+    const applyTheme = (theme) => {
+      if (theme === "dark") {
+        root.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        root.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    };
+
+    toggle.addEventListener("click", () => {
+      const isDark = root.classList.contains("dark");
+      applyTheme(isDark ? "light" : "dark");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const saved = localStorage.getItem("theme");
+      if (saved) applyTheme(saved);
+      else if (window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
+    });
+
+    // Keyboard shortcut: D for dark mode
+    document.addEventListener("keydown", e => {
+      if (e.key.toLowerCase() === "d") {
+        toggle.click();
+      }
+    });
   </script>
 </body>
 </html>
