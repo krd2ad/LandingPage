@@ -5,15 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kiernan DiMeglio | Projects & More</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <!-- Tailwind CDN -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS Animations -->
+  <!-- AOS for animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+    body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -65,22 +63,8 @@
     <!-- Reading -->
     <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
       <h2 class="text-xl font-semibold mb-4">📚 What I’m Reading</h2>
-      <ul class="space-y-4">
-        <li>
-          <h3 class="text-lg font-medium">How AI Is Reshaping Triage in Emergency Care</h3>
-          <p class="text-sm text-gray-600">Exploring predictive models improving ER prioritization in hospitals.</p>
-          <a class="text-blue-600 hover:underline text-sm" href="https://www.statnews.com/2024/12/13/ai-emergency-room-triage/" target="_blank">Read →</a>
-        </li>
-        <li>
-          <h3 class="text-lg font-medium">Can LLMs Fix Clinical Documentation?</h3>
-          <p class="text-sm text-gray-600">How large language models streamline physician workflows.</p>
-          <a class="text-blue-600 hover:underline text-sm" href="https://www.nature.com/articles/s41746-024-00981-w" target="_blank">Explore →</a>
-        </li>
-        <li>
-          <h3 class="text-lg font-medium">Bias in Healthcare AI: What We Still Miss</h3>
-          <p class="text-sm text-gray-600">Unpacking structural inequities in training data and algorithms.</p>
-          <a class="text-blue-600 hover:underline text-sm" href="https://www.healthaffairs.org/content/forefront/addressing-bias-healthcare-ai" target="_blank">Investigate →</a>
-        </li>
+      <ul id="reading-list" class="space-y-4">
+        <!-- Dynamically filled by JS -->
       </ul>
     </section>
   </main>
@@ -91,6 +75,21 @@
 
   <script>
     AOS.init({ duration: 800, once: true });
+
+    // Load reading list from articles.json
+    fetch('articles.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('reading-list');
+        data.forEach(article => {
+          container.innerHTML += `
+            <li>
+              <h3 class="text-lg font-medium">${article.title}</h3>
+              <p class="text-sm text-gray-600">${article.desc}</p>
+              <a class="text-blue-600 hover:underline text-sm" href="${article.url}" target="_blank">Read →</a>
+            </li>`;
+        });
+      });
   </script>
 </body>
 </html>
