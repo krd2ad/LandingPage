@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiernan DiMeglio | Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    header {
+      background-color: #111827;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .project-card {
+      background-color: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+    .project-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .project-desc {
+      margin: 0.5rem 0;
+      color: #4b5563;
+    }
+    .project-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kiernan DiMeglio's Projects</h1>
+    <p>Welcome to my site — explore the tools I've built and what's coming next.</p>
+  </header>
+  <main>
+    <section class="project-list">
+      <div class="project-card">
+        <h2 class="project-title">🗂️ Task Website</h2>
+        <p class="project-desc">A dynamic task-tracking web app designed to simplify project management.</p>
+        <a class="project-link" href="https://tasks.kiernandimeglio.com" target="_blank">Visit Task Website →</a>
+      </div>
+
+      <div class="project-card">
+        <h2 class="project-title">📌 Project 2 (Coming Soon)</h2>
+        <p class="project-desc">Stay tuned for another tool that enhances productivity and organization.</p>
+      </div>
+
+      <div class="project-card">
+        <h2 class="project-title">🔧 Project 3 (Coming Soon)</h2>
+        <p class="project-desc">More tools and utilities are in the works — check back regularly.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    © 2025 Kiernan DiMeglio • More updates coming soon
+  </footer>
+</body>
+</html>
