@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kiernan DiMeglio | Projects & More</title>
 
-  <!-- Light by default; set dark if stored -->
+  <!-- Theme Preference -->
   <script>
     (function () {
       const theme = localStorage.getItem("theme");
@@ -17,7 +17,7 @@
     })();
   </script>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- AOS Animation -->
@@ -53,13 +53,12 @@
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Sticky Header -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold">Kiernan DiMeglio</h1>
       <button id="toggleDark" class="focus:outline-none" aria-label="Toggle dark mode">
         <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <!-- Sun (default icon) -->
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M12 3v1m0 16v1m8.66-8.66l-.707.707M4.05 4.05l-.707.707M21 12h-1M4 12H3m16.95-4.95l-.707.707M4.05 19.95l-.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
         </svg>
@@ -67,7 +66,7 @@
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main -->
   <main id="main" class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
     <!-- Projects -->
     <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" tabindex="0">
@@ -96,15 +95,16 @@
     <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100" tabindex="0">
       <h2 class="text-xl font-semibold mb-4">🔗 Links</h2>
       <ul class="space-y-4">
-        <li class="flex items-center gap-2">
+        <li class="flex items-center gap-2 flex-wrap">
           <i data-feather="linkedin"></i>
           <a class="text-blue-600 hover:underline text-sm" href="https://www.linkedin.com/in/kiernandimeglio/" target="_blank">Connect on LinkedIn</a>
         </li>
-        <li class="flex items-center gap-2">
+        <li class="flex items-center gap-2 flex-wrap">
           <i data-feather="github"></i>
           <a class="text-blue-600 hover:underline text-sm" href="https://github.com/krd2ad" target="_blank">View GitHub Repos</a>
+          <span id="last-activity" class="text-sm text-gray-500 dark:text-gray-400 ml-2"></span>
         </li>
-        <li class="flex items-center gap-2">
+        <li class="flex items-center gap-2 flex-wrap">
           <i data-feather="mail"></i>
           <a class="text-blue-600 hover:underline text-sm" href="mailto:krd2ad@virginia.edu">Email Me</a>
         </li>
@@ -122,14 +122,14 @@
     © 2025 Kiernan DiMeglio • More tools and insights on the way
   </footer>
 
-  <!-- Scripts -->
+  <!-- JS -->
   <script>
     AOS.init({ duration: 800, once: true });
     feather.replace();
   </script>
 
-  <!-- Load articles -->
   <script>
+    // Load article feed
     fetch('articles.json')
       .then(res => res.json())
       .then(data => {
@@ -144,10 +144,22 @@
           container.appendChild(li);
         });
       });
-  </script>
 
-  <!-- Dark Mode Toggle Logic -->
-  <script>
+    // GitHub last activity (most recent pushed repo)
+    fetch("https://api.github.com/users/krd2ad/repos?per_page=100&sort=pushed")
+      .then(res => res.json())
+      .then(repos => {
+        if (!repos.length) return;
+        const latest = repos[0];
+        const date = new Date(latest.pushed_at);
+        const formatted = date.toLocaleDateString(undefined, {
+          year: "numeric", month: "short", day: "numeric"
+        });
+        document.getElementById("last-activity").innerHTML =
+          `Last activity on <a class="underline hover:text-blue-600" href="${latest.html_url}" target="_blank">${latest.name}</a> — ${formatted}`;
+      });
+
+    // Dark mode toggle
     const toggle = document.getElementById("toggleDark");
     const icon = document.getElementById("themeIcon");
     const html = document.documentElement;
@@ -168,7 +180,6 @@
       }
     };
 
-    // Initial state
     const stored = localStorage.getItem("theme");
     setTheme(stored === "dark" ? "dark" : "light");
 
