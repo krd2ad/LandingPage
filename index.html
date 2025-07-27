@@ -3,93 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kiernan DiMeglio | Projects</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <title>Kiernan DiMeglio | Projects & More</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9fafb;
-      color: #111827;
-    }
-    header {
-      background-color: #111827;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .project-card {
-      background-color: white;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-    }
-    .project-title {
-      margin: 0;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    .project-desc {
-      margin: 0.5rem 0;
-      color: #4b5563;
-    }
-    .project-link {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #6b7280;
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Kiernan DiMeglio's Projects</h1>
-    <p>Welcome to my site — explore the tools I've built and what's coming next.</p>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-gray-900 text-white py-10 text-center">
+    <h1 class="text-3xl font-bold">Kiernan DiMeglio</h1>
+    <p class="mt-2 text-gray-300">Explore my work, connect with me, and see what I’m reading.</p>
   </header>
-  <main>
-    <section class="project-list">
-      <div class="project-card">
-        <h2 class="project-title">🗂️ Task Website</h2>
-        <p class="project-desc">A dynamic task-tracking web app designed to simplify project management.</p>
-        <a class="project-link" href="https://tasks.kiernandimeglio.com" target="_blank">Visit Task Website →</a>
-      </div>
 
-      <div class="project-card">
-        <h2 class="project-title">📌 Project 2 (Coming Soon)</h2>
-        <p class="project-desc">Stay tuned for another tool that enhances productivity and organization.</p>
-      </div>
+  <main class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Projects -->
+    <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up">
+      <h2 class="text-xl font-semibold mb-4">🛠️ Projects</h2>
+      <ul class="space-y-4">
+        <li>
+          <h3 class="font-medium text-lg">Task Website</h3>
+          <p class="text-sm text-gray-600">A task-tracking web app focused on speed and clarity.</p>
+          <a class="text-blue-600 hover:underline text-sm" href="https://tasks.kiernandimeglio.com" target="_blank">Launch →</a>
+        </li>
+        <li>
+          <h3 class="font-medium text-lg">Project 2</h3>
+          <p class="text-sm text-gray-500">Coming soon: A new productivity experiment.</p>
+        </li>
+        <li>
+          <h3 class="font-medium text-lg">Project 3</h3>
+          <p class="text-sm text-gray-500">A creative tool in stealth. Check back soon.</p>
+        </li>
+      </ul>
+    </section>
 
-      <div class="project-card">
-        <h2 class="project-title">🔧 Project 3 (Coming Soon)</h2>
-        <p class="project-desc">More tools and utilities are in the works — check back regularly.</p>
-      </div>
+    <!-- Links -->
+    <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-xl font-semibold mb-4">🔗 Links</h2>
+      <ul class="space-y-4">
+        <li>
+          <h3 class="text-lg font-medium">LinkedIn</h3>
+          <a class="text-blue-600 hover:underline text-sm" href="https://www.linkedin.com/in/kiernandimeglio/" target="_blank">Connect →</a>
+        </li>
+        <li>
+          <h3 class="text-lg font-medium">GitHub</h3>
+          <a class="text-blue-600 hover:underline text-sm" href="https://github.com/krd2ad" target="_blank">View Repos →</a>
+        </li>
+        <li>
+          <h3 class="text-lg font-medium">Contact</h3>
+          <a class="text-blue-600 hover:underline text-sm" href="mailto:kiernandimeglio@gmail.com">Email Me →</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Reading -->
+    <section class="bg-white rounded-2xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="text-xl font-semibold mb-4">📚 What I’m Reading</h2>
+      <ul class="space-y-4">
+        <li>
+          <h3 class="text-lg font-medium">How AI Is Reshaping Triage in Emergency Care</h3>
+          <p class="text-sm text-gray-600">Exploring predictive models improving ER prioritization in hospitals.</p>
+          <a class="text-blue-600 hover:underline text-sm" href="https://www.statnews.com/2024/12/13/ai-emergency-room-triage/" target="_blank">Read →</a>
+        </li>
+        <li>
+          <h3 class="text-lg font-medium">Can LLMs Fix Clinical Documentation?</h3>
+          <p class="text-sm text-gray-600">How large language models streamline physician workflows.</p>
+          <a class="text-blue-600 hover:underline text-sm" href="https://www.nature.com/articles/s41746-024-00981-w" target="_blank">Explore →</a>
+        </li>
+        <li>
+          <h3 class="text-lg font-medium">Bias in Healthcare AI: What We Still Miss</h3>
+          <p class="text-sm text-gray-600">Unpacking structural inequities in training data and algorithms.</p>
+          <a class="text-blue-600 hover:underline text-sm" href="https://www.healthaffairs.org/content/forefront/addressing-bias-healthcare-ai" target="_blank">Investigate →</a>
+        </li>
+      </ul>
     </section>
   </main>
-  <footer>
-    © 2025 Kiernan DiMeglio • More updates coming soon
+
+  <footer class="text-center text-sm text-gray-500 py-8">
+    © 2025 Kiernan DiMeglio • More tools and insights on the way
   </footer>
+
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
 </body>
 </html>
