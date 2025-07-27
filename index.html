@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiernan DiMeglio | Projects & More</title>
 
-  <!-- Tailwind Config: use class-based dark mode -->
+  <!-- Tailwind Config: class-based dark mode -->
   <script>
-    tailwind.config = {
-      darkMode: 'class'
-    };
+    tailwind = { config: { darkMode: 'class' } };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- AOS Animation -->
+  <!-- AOS animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-  <!-- Feather Icons -->
+  <!-- Feather icons -->
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: inherit;
+      transition: background-color 0.3s, color 0.3s;
     }
     .skip-link {
       position: absolute;
@@ -46,7 +44,7 @@
   </style>
 </head>
 
-<body class="transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Header -->
@@ -55,7 +53,7 @@
       <h1 class="text-2xl font-bold">Kiernan DiMeglio</h1>
       <button id="toggleDark" class="focus:outline-none" aria-label="Toggle dark mode">
         <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <!-- Sun icon by default -->
+          <!-- Sun icon (default) -->
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M12 3v1m0 16v1m8.66-8.66l-.707.707M4.05 4.05l-.707.707M21 12h-1M4 12H3m16.95-4.95l-.707.707M4.05 19.95l-.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
         </svg>
@@ -66,7 +64,7 @@
   <!-- Main Content -->
   <main id="main" class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
     <!-- Projects -->
-    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" tabindex="0">
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up">
       <h2 class="text-xl font-semibold mb-4">🛠️ Projects</h2>
       <div class="space-y-4">
         <div class="p-4 rounded-lg border border-gray-200 dark:border-gray-700">
@@ -74,7 +72,7 @@
           <p class="text-sm text-gray-600 dark:text-gray-300">A task-tracking web app focused on speed and clarity.</p>
           <a href="https://tasks.kiernandimeglio.com" target="_blank"
              class="inline-block mt-2 text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm transition">
-             Launch →
+            Launch →
           </a>
         </div>
         <div class="p-4 rounded-lg border border-gray-200 dark:border-gray-700">
@@ -89,7 +87,7 @@
     </section>
 
     <!-- Links -->
-    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100" tabindex="0">
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
       <h2 class="text-xl font-semibold mb-4">🔗 Links</h2>
       <ul class="space-y-4">
         <li class="flex items-center gap-2 flex-wrap">
@@ -109,7 +107,7 @@
     </section>
 
     <!-- Reading -->
-    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200" tabindex="0">
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
       <h2 class="text-xl font-semibold mb-4">📚 What I’m Reading</h2>
       <ul id="reading-list" class="space-y-4"></ul>
     </section>
@@ -125,10 +123,8 @@
   <script>
     AOS.init({ duration: 800, once: true });
     feather.replace();
-  </script>
 
-  <script>
-    // Load articles
+    // Load reading list
     fetch('articles.json')
       .then(res => res.json())
       .then(data => {
@@ -158,7 +154,7 @@
           `Last activity on <a class="underline hover:text-blue-600" href="${latest.html_url}" target="_blank">${latest.name}</a> — ${formatted}`;
       });
 
-    // Theme toggle
+    // Dark mode toggle logic
     const toggle = document.getElementById("toggleDark");
     const icon = document.getElementById("themeIcon");
     const html = document.documentElement;
@@ -169,13 +165,13 @@
         localStorage.setItem("theme", "dark");
         icon.innerHTML = `
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />`;
+          d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />`; // moon
       } else {
         html.classList.remove("dark");
         localStorage.setItem("theme", "light");
         icon.innerHTML = `
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M12 3v1m0 16v1m8.66-8.66l-.707.707M4.05 4.05l-.707.707M21 12h-1M4 12H3m16.95-4.95l-.707.707M4.05 19.95l-.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />`;
+          d="M12 3v1m0 16v1m8.66-8.66l-.707.707M4.05 4.05l-.707.707M21 12h-1M4 12H3m16.95-4.95l-.707.707M4.05 19.95l-.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />`; // sun
       }
     };
 
