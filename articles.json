@@ -1,0 +1,17 @@
+[
+  {
+    "title": "How AI Is Reshaping Triage in Emergency Care",
+    "desc": "Predictive models improving ER prioritization.",
+    "url": "https://www.statnews.com/2024/12/13/ai-emergency-room-triage/"
+  },
+  {
+    "title": "Can LLMs Fix Clinical Documentation?",
+    "desc": "How large language models streamline physician workflows.",
+    "url": "https://www.nature.com/articles/s41746-024-00981-w"
+  },
+  {
+    "title": "Bias in Healthcare AI: What We Still Miss",
+    "desc": "Unpacking structural inequities in training data and algorithms.",
+    "url": "https://www.healthaffairs.org/content/forefront/addressing-bias-healthcare-ai"
+  }
+]
