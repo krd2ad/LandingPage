@@ -26,26 +26,35 @@ function renderReadingChallenge(data) {
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-        <div>
+      <div class="flex flex-col gap-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <h2 class="text-2xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
-          <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
-            ${data.count} out of ${data.goal} books completed
+          <div class="text-xs text-gray-400 dark:text-gray-500 sm:text-right shrink-0">
+            Updated ${formatUpdatedDate(data.updatedAt)}
+          </div>
+        </div>
+
+        <p class="text-base text-gray-600 dark:text-gray-300">
+          ${data.count} out of ${data.goal} books completed
+        </p>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="mb-6">
+          <div class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1">
+            <span class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-300">
+              Recently Finished
+            </span>
+          </div>
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+            Books completed in ${data.year}, newest first.
           </p>
         </div>
 
-        <div class="text-sm text-gray-400 dark:text-gray-500 sm:text-right">
-          Updated ${formatUpdatedDate(data.updatedAt)}
-        </div>
-      </div>
-
-      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-        <h3 class="text-sm font-semibold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 mb-4">
-          Recently Finished
-        </h3>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          ${books.map(bookCard).join("")}
+        <div class="rounded-2xl bg-gray-50 dark:bg-gray-900 p-4 md:p-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            ${books.map(bookCard).join("")}
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +68,7 @@ function bookCard(book) {
   const isbn = escapeHtml(book.isbn13 || book.isbn || "");
 
   return `
-    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-5">
+    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5">
       <h4 class="text-lg font-semibold leading-snug break-words">${title}</h4>
       <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">${author}</p>
       <div class="mt-4 space-y-1">
