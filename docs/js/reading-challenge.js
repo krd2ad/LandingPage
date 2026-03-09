@@ -100,13 +100,13 @@ function bookCard(book) {
   const isbn = escapeHtml(book.isbn13 || book.isbn || "");
 
   return `
-    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4 shadow-sm">
-      <h4 class="text-base font-semibold leading-snug break-words">${title}</h4>
+    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4">
+      <h4 class="text-lg font-semibold leading-snug break-words">${title}</h4>
       <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">${author}</p>
-      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">${finishedLabel}</p>
-      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-        ISBN: ${isbn || "Not available"}
-      </p>
+      <div class="mt-3 space-y-1">
+        <p class="text-sm text-gray-500 dark:text-gray-400">${finishedLabel}</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">ISBN: ${isbn || "Not available"}</p>
+      </div>
     </article>
   `;
 }
