@@ -30,16 +30,16 @@ function renderReadingChallenge(data) {
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-        <div class="max-w-xl">
+      <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_140px_140px] gap-8 items-center">
+        <div>
           <h2 class="text-3xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
-          <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
+          <p class="mt-3 text-lg text-gray-600 dark:text-gray-300">
             ${data.count} of ${data.goal} books completed
           </p>
         </div>
 
-        <div class="flex items-center gap-6 md:gap-8">
-          <div class="relative w-28 h-28 shrink-0">
+        <div class="flex justify-center">
+          <div class="relative w-28 h-28">
             <svg class="w-28 h-28 -rotate-90" viewBox="0 0 120 120">
               <circle
                 cx="60"
@@ -65,14 +65,13 @@ function renderReadingChallenge(data) {
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
               <div class="text-2xl font-bold leading-none">${data.count}/${data.goal}</div>
-              <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">books</div>
             </div>
           </div>
+        </div>
 
-          <div class="min-w-[120px]">
-            <div class="text-3xl font-bold leading-none">${percent}%</div>
-            <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">of annual goal</div>
-          </div>
+        <div class="text-left md:text-left">
+          <div class="text-3xl font-bold leading-none">${percent}%</div>
+          <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">of annual goal</div>
         </div>
       </div>
 
