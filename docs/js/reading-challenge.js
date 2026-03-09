@@ -86,59 +86,30 @@ function renderReadingChallenge(data) {
           </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-          ${recentBooks.map(bookTile).join("")}
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          ${recentBooks.map(bookCard).join("")}
         </div>
       </div>
     </div>
   `;
 }
 
-function bookTile(book) {
+function bookCard(book) {
   const title = escapeHtml(book.title || "Untitled");
   const author = escapeHtml(book.author || "Unknown Author");
   const finishedLabel = formatFinishedDate(book.dateRead || "");
-  const coverUrl = book.coverUrl || "";
+  const isbn = escapeHtml(book.isbn13 || book.isbn || "");
 
   return `
-    <article class="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-gray-50 dark:bg-gray-900 shadow-sm">
-      ${coverMarkup(coverUrl, title)}
-      <div class="p-3">
-        <h4 class="text-sm font-semibold leading-snug">${truncate(title, 40)}</h4>
-        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">${truncate(author, 28)}</p>
-        <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">${finishedLabel}</p>
-      </div>
+    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4 shadow-sm">
+      <h4 class="text-base font-semibold leading-snug break-words">${title}</h4>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">${author}</p>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">${finishedLabel}</p>
+      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        ISBN: ${isbn || "Not available"}
+      </p>
     </article>
   `;
-}
-
-function coverMarkup(coverUrl, title) {
-  if (!coverUrl) {
-    return `
-      <div class="w-full aspect-[2/3] bg-gray-100 dark:bg-gray-800"></div>
-    `;
-  }
-
-  return `
-    <img
-      src="${coverUrl}"
-      alt="Cover of ${title}"
-      class="block w-full aspect-[2/3] object-cover bg-gray-100 dark:bg-gray-800"
-      loading="lazy"
-      onerror="this.replaceWith(createEmptyCover())"
-    />
-  `;
-}
-
-function createEmptyCover() {
-  const div = document.createElement("div");
-  div.className = "w-full aspect-[2/3] bg-gray-100 dark:bg-gray-800";
-  return div;
-}
-
-function truncate(text, maxLength) {
-  if (!text || text.length <= maxLength) return text;
-  return text.slice(0, maxLength - 1).trimEnd() + "…";
 }
 
 function formatFinishedDate(dateStr) {
