@@ -1,0 +1,113 @@
+{
+  "year": 2026,
+  "goal": 24,
+  "count": 8,
+  "percent": 33,
+  "updatedAt": "2026-03-09T17:33:30.481Z",
+  "books": [
+    {
+      "title": "Educated",
+      "author": "Tara Westover",
+      "dateRead": "2026-03-07",
+      "rating": 5,
+      "averageRating": 4.46,
+      "pages": 335,
+      "yearPublished": 2018,
+      "isbn": "",
+      "isbn13": "",
+      "coverUrl": "",
+      "source": "goodreads"
+    },
+    {
+      "title": "The Subterraneans",
+      "author": "Jack Kerouac",
+      "dateRead": "2026-02-14",
+      "rating": 3,
+      "averageRating": 3.65,
+      "pages": 128,
+      "yearPublished": 1994,
+      "isbn": "0802131867",
+      "isbn13": "9780802131867",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780802131867-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Shamanism: The Timeless Religion",
+      "author": "Manvir   Singh",
+      "dateRead": "2026-02-14",
+      "rating": 3,
+      "averageRating": 3.95,
+      "pages": 304,
+      "yearPublished": 2025,
+      "isbn": "0593537548",
+      "isbn13": "9780593537541",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593537541-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Flipping The Script: The 2024 U.S. Gymnastics Team’s Journey to Olympic Gold",
+      "author": "Caroline Price",
+      "dateRead": "2026-02-07",
+      "rating": 4,
+      "averageRating": 3.67,
+      "pages": 283,
+      "yearPublished": 2025,
+      "isbn": "",
+      "isbn13": "",
+      "coverUrl": "",
+      "source": "goodreads"
+    },
+    {
+      "title": "The Anthropocene Reviewed",
+      "author": "John Green",
+      "dateRead": "2026-01-26",
+      "rating": 3,
+      "averageRating": 4.35,
+      "pages": 302,
+      "yearPublished": 2021,
+      "isbn": "",
+      "isbn13": "",
+      "coverUrl": "",
+      "source": "goodreads"
+    },
+    {
+      "title": "Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism",
+      "author": "Sarah Wynn-Williams",
+      "dateRead": "2026-01-25",
+      "rating": 5,
+      "averageRating": 4.14,
+      "pages": 382,
+      "yearPublished": 2025,
+      "isbn": "1250391237",
+      "isbn13": "9781250391230",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781250391230-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Everything Is Tuberculosis: The History and Persistence of Our Deadliest Infection",
+      "author": "John Green",
+      "dateRead": "2026-01-16",
+      "rating": 5,
+      "averageRating": 4.34,
+      "pages": 198,
+      "yearPublished": 2025,
+      "isbn": "0525556575",
+      "isbn13": "9780525556572",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780525556572-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Who Is Government? The Untold Story of Public Service",
+      "author": "Michael   Lewis",
+      "dateRead": "2026-01-03",
+      "rating": 4,
+      "averageRating": 4.18,
+      "pages": 272,
+      "yearPublished": 2025,
+      "isbn": "",
+      "isbn13": "9798217047802",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9798217047802-L.jpg",
+      "source": "goodreads"
+    }
+  ]
+}
