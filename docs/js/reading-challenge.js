@@ -26,16 +26,13 @@ function renderReadingChallenge(data) {
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div class="flex flex-col gap-2">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <h2 class="text-2xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
-          <div class="text-xs text-gray-400 dark:text-gray-500 sm:text-right shrink-0">
-            Updated ${formatUpdatedDate(data.updatedAt)}
-          </div>
-        </div>
-
-        <p class="text-base text-gray-600 dark:text-gray-300">
-          ${data.count} out of ${data.goal} books completed
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
+        <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">
+          Updated ${formatUpdatedDate(data.updatedAt)}
+        </p>
+        <p class="mt-1 text-base text-gray-600 dark:text-gray-300">
+          <span class="font-semibold text-gray-900 dark:text-gray-100">${data.count} out of ${data.goal}</span> books completed
         </p>
       </div>
 
