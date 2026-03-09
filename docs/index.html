@@ -110,7 +110,7 @@
 
     <!-- Reading -->
     <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-      <h2 class="text-xl font-semibold mb-4">📚 What I’m Reading</h2>
+      <h2 class="text-xl font-semibold mb-4">✍️ What I’ve Written</h2>
       <ul id="reading-list" class="space-y-4"></ul>
     </section>
   </main>
@@ -175,20 +175,30 @@
       });
 
     // Load articles
-    fetch('articles.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('reading-list');
-        data.forEach(article => {
-          const li = document.createElement('li');
-          li.className = "p-4 rounded-lg border border-gray-200 dark:border-gray-700";
-          li.innerHTML = `
-            <h3 class="text-lg font-medium">${article.title}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">${article.desc}</p>
-            <a class="text-blue-600 hover:underline text-sm" href="${article.url}" target="_blank">Read →</a>`;
-          container.appendChild(li);
+      fetch('articles.json')
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('writing-list');
+          data.forEach(article => {
+            const li = document.createElement('li');
+            li.className = "p-4 rounded-lg border border-gray-200 dark:border-gray-700";
+            li.innerHTML = `
+              <h3 class="text-lg font-medium">${article.title}</h3>
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mt-1">
+                ${article.role || "Author"}
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">${article.desc}</p>
+              <a
+                class="text-blue-600 hover:underline text-sm inline-block mt-2"
+                href="${article.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read →
+              </a>`;
+            container.appendChild(li);
+          });
         });
-      });
   </script>
   <script src="js/reading-challenge.js"></script>
 </body>
