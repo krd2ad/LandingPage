@@ -30,17 +30,17 @@ function renderReadingChallenge(data) {
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-        <div>
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+        <div class="max-w-xl">
           <h2 class="text-3xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
           <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
             ${data.count} of ${data.goal} books completed
           </p>
         </div>
 
-        <div class="flex items-center gap-6">
-          <div class="relative w-36 h-36 shrink-0">
-            <svg class="w-36 h-36 -rotate-90" viewBox="0 0 120 120">
+        <div class="flex items-center gap-6 md:gap-8">
+          <div class="relative w-28 h-28 shrink-0">
+            <svg class="w-28 h-28 -rotate-90" viewBox="0 0 120 120">
               <circle
                 cx="60"
                 cy="60"
@@ -64,20 +64,20 @@ function renderReadingChallenge(data) {
               />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <div class="text-3xl font-bold leading-none">${data.count}/${data.goal}</div>
-              <div class="mt-1 text-sm text-gray-500 dark:text-gray-400">books</div>
+              <div class="text-2xl font-bold leading-none">${data.count}/${data.goal}</div>
+              <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">books</div>
             </div>
           </div>
 
-          <div>
-            <div class="text-4xl font-bold leading-none">${percent}%</div>
+          <div class="min-w-[120px]">
+            <div class="text-3xl font-bold leading-none">${percent}%</div>
             <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">of annual goal</div>
           </div>
         </div>
       </div>
 
-      <div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
-        <div class="flex items-center justify-between mb-4">
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
           <h3 class="text-sm font-semibold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400">
             Recently Finished
           </h3>
