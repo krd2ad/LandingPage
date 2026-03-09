@@ -5,7 +5,7 @@ const { parse } = require("csv-parse/sync");
 const ROOT = path.resolve(__dirname, "..");
 const goodreadsPath = path.join(ROOT, "data", "goodreads_library_export.csv");
 const manualPath = path.join(ROOT, "data", "manual-books.json");
-const outputPath = path.join(ROOT, "data", "books-2026.json");
+const outputPath = path.join(ROOT, "docs", "data", "books-2026.json");
 
 const GOAL = 24;
 const YEAR = 2026;
