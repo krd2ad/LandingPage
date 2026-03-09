@@ -24,21 +24,21 @@ function renderReadingChallenge(data) {
   const section = document.getElementById("reading-challenge-widget");
   const percent = Math.max(0, Math.min(data.percent || 0, 100));
   const books = Array.isArray(data.books) ? data.books : [];
-  const recentBooks = books.slice(0, 6);
+  const recentBooks = books.slice(0, 8);
   const circumference = 2 * Math.PI * 52;
   const dashOffset = circumference * (1 - percent / 100);
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-        <div class="min-w-0">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+        <div>
           <h2 class="text-3xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
           <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
             ${data.count} of ${data.goal} books completed
           </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+        <div class="flex items-center gap-6">
           <div class="relative w-36 h-36 shrink-0">
             <svg class="w-36 h-36 -rotate-90" viewBox="0 0 120 120">
               <circle
@@ -86,50 +86,54 @@ function renderReadingChallenge(data) {
           </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-5">
-          ${recentBooks.map(bookCard).join("")}
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+          ${recentBooks.map(bookTile).join("")}
         </div>
       </div>
     </div>
   `;
 }
 
-function bookCard(book) {
+function bookTile(book) {
   const title = escapeHtml(book.title || "Untitled");
   const author = escapeHtml(book.author || "Unknown Author");
-  const dateRead = formatDate(book.dateRead || "");
+  const finishedLabel = formatFinishedDate(book.dateRead || "");
   const coverUrl = book.coverUrl || "";
-  const initials = getInitials(title);
 
   return `
-    <article class="group rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-gray-50 dark:bg-gray-900 shadow-sm hover:shadow-md transition">
-      ${
-        coverUrl
-          ? `<img
-              src="${coverUrl}"
-              alt="Cover of ${title}"
-              class="block w-full aspect-[2/3] object-cover bg-gray-100 dark:bg-gray-800"
-              loading="lazy"
-              onerror="this.outerHTML='<div class=&quot;w-full aspect-[2/3] flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-semibold text-2xl&quot;>${initials}</div>'"
-            />`
-          : `<div class="w-full aspect-[2/3] flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-semibold text-2xl">${initials}</div>`
-      }
+    <article class="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-gray-50 dark:bg-gray-900 shadow-sm">
+      ${coverMarkup(coverUrl, title)}
       <div class="p-3">
-        <h4 class="text-sm font-semibold leading-snug min-h-[2.6rem]">${truncate(title, 42)}</h4>
-        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400 min-h-[1rem]">${truncate(author, 28)}</p>
-        <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">${dateRead}</p>
+        <h4 class="text-sm font-semibold leading-snug">${truncate(title, 40)}</h4>
+        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">${truncate(author, 28)}</p>
+        <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">${finishedLabel}</p>
       </div>
     </article>
   `;
 }
 
-function getInitials(text) {
-  return text
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w.charAt(0).toUpperCase())
-    .join("");
+function coverMarkup(coverUrl, title) {
+  if (!coverUrl) {
+    return `
+      <div class="w-full aspect-[2/3] bg-gray-100 dark:bg-gray-800"></div>
+    `;
+  }
+
+  return `
+    <img
+      src="${coverUrl}"
+      alt="Cover of ${title}"
+      class="block w-full aspect-[2/3] object-cover bg-gray-100 dark:bg-gray-800"
+      loading="lazy"
+      onerror="this.replaceWith(createEmptyCover())"
+    />
+  `;
+}
+
+function createEmptyCover() {
+  const div = document.createElement("div");
+  div.className = "w-full aspect-[2/3] bg-gray-100 dark:bg-gray-800";
+  return div;
 }
 
 function truncate(text, maxLength) {
@@ -137,15 +141,16 @@ function truncate(text, maxLength) {
   return text.slice(0, maxLength - 1).trimEnd() + "…";
 }
 
-function formatDate(dateStr) {
+function formatFinishedDate(dateStr) {
   if (!dateStr) return "";
   const date = new Date(dateStr + "T00:00:00");
-  if (Number.isNaN(date.getTime())) return dateStr;
-  return date.toLocaleDateString(undefined, {
-    month: "short",
+  if (Number.isNaN(date.getTime())) return `Date Finished: ${dateStr}`;
+
+  return `Date Finished: ${date.toLocaleDateString(undefined, {
+    month: "long",
     day: "numeric",
     year: "numeric"
-  });
+  })}`;
 }
 
 function formatUpdatedDate(dateStr) {
