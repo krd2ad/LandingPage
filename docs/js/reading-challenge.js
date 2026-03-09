@@ -22,71 +22,30 @@ async function loadReadingChallenge() {
 
 function renderReadingChallenge(data) {
   const section = document.getElementById("reading-challenge-widget");
-  const percent = Math.max(0, Math.min(data.percent || 0, 100));
   const books = Array.isArray(data.books) ? data.books : [];
-  const recentBooks = books.slice(0, 8);
-  const circumference = 2 * Math.PI * 52;
-  const dashOffset = circumference * (1 - percent / 100);
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_140px_140px] gap-8 items-center">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
-          <h2 class="text-3xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
-          <p class="mt-3 text-lg text-gray-600 dark:text-gray-300">
-            ${data.count} of ${data.goal} books completed
+          <h2 class="text-2xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
+          <p class="mt-2 text-base text-gray-600 dark:text-gray-300">
+            ${data.count} out of ${data.goal} books completed
           </p>
         </div>
 
-        <div class="flex justify-center">
-          <div class="relative w-28 h-28">
-            <svg class="w-28 h-28 -rotate-90" viewBox="0 0 120 120">
-              <circle
-                cx="60"
-                cy="60"
-                r="52"
-                stroke="currentColor"
-                stroke-width="8"
-                fill="none"
-                class="text-gray-200 dark:text-gray-700"
-              />
-              <circle
-                cx="60"
-                cy="60"
-                r="52"
-                stroke="currentColor"
-                stroke-width="8"
-                fill="none"
-                stroke-linecap="round"
-                class="text-blue-600"
-                stroke-dasharray="${circumference}"
-                stroke-dashoffset="${dashOffset}"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <div class="text-2xl font-bold leading-none">${data.count}/${data.goal}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-left md:text-left">
-          <div class="text-3xl font-bold leading-none">${percent}%</div>
-          <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">of annual goal</div>
+        <div class="text-sm text-gray-400 dark:text-gray-500 sm:text-right">
+          Updated ${formatUpdatedDate(data.updatedAt)}
         </div>
       </div>
 
       <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-          <h3 class="text-sm font-semibold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400">
-            Recently Finished
-          </h3>
-          <span class="text-xs text-gray-400 dark:text-gray-500">
-            Updated ${formatUpdatedDate(data.updatedAt)}
-          </span>
-        </div>
+        <h3 class="text-sm font-semibold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 mb-4">
+          Recently Finished
+        </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          ${recentBooks.map(bookCard).join("")}
+          ${books.map(bookCard).join("")}
         </div>
       </div>
     </div>
@@ -100,10 +59,10 @@ function bookCard(book) {
   const isbn = escapeHtml(book.isbn13 || book.isbn || "");
 
   return `
-    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4">
+    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-5">
       <h4 class="text-lg font-semibold leading-snug break-words">${title}</h4>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">${author}</p>
-      <div class="mt-3 space-y-1">
+      <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">${author}</p>
+      <div class="mt-4 space-y-1">
         <p class="text-sm text-gray-500 dark:text-gray-400">${finishedLabel}</p>
         <p class="text-sm text-gray-500 dark:text-gray-400">ISBN: ${isbn || "Not available"}</p>
       </div>
