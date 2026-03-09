@@ -5,7 +5,8 @@ const { parse } = require("csv-parse/sync");
 const ROOT = path.resolve(__dirname, "..");
 const goodreadsPath = path.join(ROOT, "data", "goodreads_library_export.csv");
 const manualPath = path.join(ROOT, "data", "manual-books.json");
-const outputPath = path.join(ROOT, "docs", "data", "books-2026.json");
+const outputDir = path.join(ROOT, "docs", "data");
+const outputPath = path.join(outputDir, "books-2026.json");
 
 const GOAL = 24;
 const YEAR = 2026;
@@ -93,5 +94,6 @@ const output = {
   books: merged
 };
 
+fs.mkdirSync(outputDir, { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 console.log(`Generated ${outputPath} with ${merged.length} books.`);
