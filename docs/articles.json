@@ -1,17 +1,14 @@
 [
   {
-    "title": "How AI Is Reshaping Triage in Emergency Care",
-    "desc": "Predictive models improving ER prioritization.",
-    "url": "https://www.statnews.com/2024/12/13/ai-emergency-room-triage/"
+    "title": "How the California Exodus is Impacting Venture Capital Activity in California",
+    "desc": "Written in support of the NVCA for my Masters thesis. (2021)",
+    "role": "Author",
+    "url": "https://drive.google.com/file/d/1SfExSVFrZzSXap9pwRFO8qh9URriF-zs/view?usp=sharing"
   },
   {
-    "title": "Can LLMs Fix Clinical Documentation?",
-    "desc": "How large language models streamline physician workflows.",
-    "url": "https://www.nature.com/articles/s41746-024-00981-w"
-  },
-  {
-    "title": "Bias in Healthcare AI: What We Still Miss",
-    "desc": "Unpacking structural inequities in training data and algorithms.",
-    "url": "https://www.healthaffairs.org/content/forefront/addressing-bias-healthcare-ai"
+    "title": "Automating Project Management with Reinforcement Learning Environments",
+    "desc": "The role of AI in the project management space, and importance of data integrity and thought in PRD environments.",
+    "role": "Peer Review",
+    "url": "https://www.linkedin.com/pulse/automating-project-management-reinforcement-learning-vol-goloshuk-dksgf/"
   }
 ]
