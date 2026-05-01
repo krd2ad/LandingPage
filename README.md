@@ -1,6 +1,6 @@
 # Personal Landing Page
 
-Personal portfolio and landing page hosted at [kiernan.co](https://kiernan.co) (via GitHub Pages). Features a projects section, AI articles feed, and a 2026 reading challenge tracker.
+Personal portfolio and landing page hosted at [kiernandimeglio.com](https://kiernandimeglio.com) (via GitHub Pages). Features a projects section, AI articles feed, and a 2026 reading challenge tracker.
 
 ## Stack
 
