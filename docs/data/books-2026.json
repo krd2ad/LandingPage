@@ -1,10 +1,62 @@
 {
   "year": 2026,
   "goal": 24,
-  "count": 14,
-  "percent": 58,
-  "updatedAt": "2026-04-11T10:10:33.093Z",
+  "count": 18,
+  "percent": 75,
+  "updatedAt": "2026-05-01T15:42:25.340Z",
   "books": [
+    {
+      "title": "Nunaga: Ten Years Among the Eskimos",
+      "author": "Duncan Pryde",
+      "dateRead": "2026-04-30",
+      "rating": 4,
+      "averageRating": 0,
+      "pages": 288,
+      "yearPublished": 2003,
+      "isbn": "0907871631",
+      "isbn13": "9780907871637",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780907871637-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "HBR'S 10 Must Reads: The Essentials",
+      "author": "Harvard Business Review",
+      "dateRead": "2026-04-27",
+      "rating": 3,
+      "averageRating": 0,
+      "pages": 288,
+      "yearPublished": 2010,
+      "isbn": "1422133443",
+      "isbn13": "9781422133446",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781422133446-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Empire of Pain: The Secret History of the Sackler Dynasty",
+      "author": "Patrick Radden Keefe",
+      "dateRead": "2026-04-21",
+      "rating": 3,
+      "averageRating": 0,
+      "pages": 625,
+      "yearPublished": 2021,
+      "isbn": "038554569X",
+      "isbn13": "9780385545693",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780385545693-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Anatomy of an Alibi",
+      "author": "Ashley Elston",
+      "dateRead": "2026-04-14",
+      "rating": 2,
+      "averageRating": 0,
+      "pages": 340,
+      "yearPublished": 2026,
+      "isbn": "0593834453",
+      "isbn13": "9780593834459",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593834459-L.jpg",
+      "source": "goodreads"
+    },
     {
       "title": "A Life on Our Planet: My Witness Statement and a Vision for the Future",
       "author": "David Attenborough",
@@ -137,7 +189,7 @@
     },
     {
       "title": "The Anthropocene Reviewed",
-      "author": "John Green",
+      "author": "John  Green",
       "dateRead": "2026-01-26",
       "rating": 3,
       "averageRating": 0,
@@ -163,7 +215,7 @@
     },
     {
       "title": "Everything Is Tuberculosis: The History and Persistence of Our Deadliest Infection",
-      "author": "John Green",
+      "author": "John  Green",
       "dateRead": "2026-01-16",
       "rating": 5,
       "averageRating": 0,
