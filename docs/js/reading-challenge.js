@@ -47,7 +47,7 @@ function renderReadingChallenge(data) {
         <p class="mt-1 text-xs text-gray-400">${pct}% of goal</p>
       </div>
 
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
         ${books.map(bookCard).join("")}
       </div>
     </div>
