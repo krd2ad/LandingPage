@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" fill="none">
+  <g fill="#00693E">
+    <!-- Hanger ring -->
+    <path d="M100 18a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/>
+    <!-- Top knob -->
+    <rect x="96" y="36" width="8" height="8" rx="1.5"/>
+    <!-- Roof -->
+    <path d="M62 64 L100 44 L138 64 Z"/>
+    <rect x="66" y="64" width="68" height="6"/>
+    <rect x="72" y="72" width="56" height="4"/>
+    <!-- Lantern body frame -->
+    <path d="M70 80 h60 v68 h-60 z M76 86 h48 v56 h-48 z" fill-rule="evenodd"/>
+    <!-- Vertical mullions -->
+    <rect x="98" y="86" width="4" height="56"/>
+    <!-- Base -->
+    <rect x="68" y="148" width="64" height="6"/>
+    <rect x="74" y="154" width="52" height="8"/>
+    <rect x="80" y="162" width="40" height="6"/>
+  </g>
+  <!-- Cross glow inside (lighter green) -->
+  <g stroke="#7DA890" stroke-width="6" stroke-linecap="round">
+    <line x1="84" y1="98" x2="116" y2="130"/>
+    <line x1="116" y1="98" x2="84" y2="130"/>
+  </g>
+  <!-- Hills -->
+  <path d="M16 200 Q70 168 110 188 Q150 208 188 184 L188 208 L16 208 Z" fill="#00693E"/>
+  <path d="M70 198 Q120 178 188 196 L188 208 L70 208 Z" fill="#7DA890"/>
+</svg>
