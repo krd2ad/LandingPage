@@ -69,7 +69,7 @@ function bookCard(book) {
 
   return `
     <article class="flex flex-col gap-2">
-      <div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-sm">
+      <div class="relative w-full h-28 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-sm">
         ${coverHtml}
       </div>
       <div class="min-w-0">
