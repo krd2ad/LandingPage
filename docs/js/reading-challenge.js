@@ -68,12 +68,12 @@ function bookCard(book) {
     : fallbackCover(title);
 
   return `
-    <article class="flex gap-3 items-start">
-      <div class="flex-shrink-0 w-12 h-16 rounded overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-sm">
+    <article class="flex flex-col gap-2">
+      <div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-sm">
         ${coverHtml}
       </div>
       <div class="min-w-0">
-        <p class="text-sm font-semibold leading-snug line-clamp-2 text-gray-900 dark:text-gray-100">${title}</p>
+        <p class="text-xs font-semibold leading-snug line-clamp-2 text-gray-900 dark:text-gray-100">${title}</p>
         <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate">${author}</p>
         ${stars ? `<p class="text-xs text-amber-400 mt-0.5 tracking-tight">${stars}</p>` : ""}
         ${month ? `<p class="text-xs text-gray-400 mt-0.5">${month}</p>` : ""}
