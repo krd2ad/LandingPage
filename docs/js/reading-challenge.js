@@ -9,6 +9,7 @@ async function loadReadingChallenge() {
     const data = await res.json();
     renderReadingChallenge(data);
   } catch (err) {
+    console.error("Reading challenge error:", err);
     section.innerHTML = `
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
         <h2 class="text-2xl font-semibold mb-2">📚 2026 Reading Challenge</h2>
@@ -48,15 +49,30 @@ function renderReadingChallenge(data) {
       </div>
 
       <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-        ${books.map(bookCard).join("")}
+        ${books.map((b, i) => bookCard(b, i)).join("")}
       </div>
     </div>
   `;
 }
 
-function bookCard(book) {
+const bookCoverSources = {};
+
+function bookCoverOnerror(el, bookId) {
+  const sources = bookCoverSources[bookId];
+  if (!sources) return;
+  if (sources.google && el.src !== sources.google) {
+    el.src = sources.google;
+    return;
+  }
+  const initial = (sources.title || "?")[0];
+  el.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-gray-400 dark:text-gray-500 select-none">${initial}</div>`;
+}
+
+function bookCard(book, index) {
   const title = escapeHtml(book.title || "Untitled");
+  const rawTitle = book.title || "Untitled";
   const author = escapeHtml(book.author || "Unknown Author");
+  const isbn = escapeHtml(book.isbn13 || book.isbn || "");
   const cover = book.coverUrl || "";
   const stars = book.rating ? "★".repeat(book.rating) + "☆".repeat(5 - book.rating) : "";
   const month = book.dateRead
@@ -67,11 +83,13 @@ function bookCard(book) {
     ? `https://books.google.com/books/content?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1`
     : "";
 
-  const coverHtml = cover
-    ? `<img src="${cover}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="${googleCover ? `this.src='${googleCover}';this.onerror=function(){this.parentElement.innerHTML=fallbackCover('${title}')};` : `this.parentElement.innerHTML=fallbackCover('${title}');`}">`
-    : googleCover
-      ? `<img src="${googleCover}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="this.parentElement.innerHTML=fallbackCover('${title}')">`
-      : fallbackCover(title);
+  const bookId = "book-" + index;
+  bookCoverSources[bookId] = { google: googleCover, title: rawTitle };
+
+  const imgSrc = cover || googleCover;
+  const coverHtml = imgSrc
+    ? `<img src="${imgSrc}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="bookCoverOnerror(this,'${bookId}')">`
+    : `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-gray-400 dark:text-gray-500 select-none">${escapeHtml(rawTitle[0] || "?")}</div>`;
 
   return `
     <article class="flex flex-col gap-2">
