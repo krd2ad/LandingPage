@@ -24,6 +24,8 @@
     .nav-link.active::after { transform: scaleX(1); }
     .nav-link.active { color: rgb(17 24 39); }
     .dark .nav-link.active { color: rgb(243 244 246); }
+    /* Push scroll targets below the sticky header */
+    section[id], main[id] { scroll-margin-top: 80px; }
   </style>
 </head>
 
@@ -31,7 +33,7 @@
   <header id="site-header" class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-sm transition-all duration-300">
     <div id="header-inner" class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center transition-all duration-300">
       <h1 class="text-xl font-bold">Kiernan DiMeglio</h1>
-      <nav class="hidden md:flex items-center gap-6">
+      <nav id="main-nav" class="hidden md:flex items-center gap-6">
         <a href="#about" class="nav-link text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">About</a>
         <a href="#content" class="nav-link text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">My Content</a>
         <a href="#consulting" class="nav-link text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">Consulting</a>
