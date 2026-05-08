@@ -63,9 +63,15 @@ function bookCard(book) {
     ? new Date(book.dateRead + "T00:00:00").toLocaleDateString(undefined, { month: "short", year: "numeric" })
     : "";
 
+  const googleCover = isbn
+    ? `https://books.google.com/books/content?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1`
+    : "";
+
   const coverHtml = cover
-    ? `<img src="${cover}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="this.parentElement.innerHTML=fallbackCover('${title}')">`
-    : fallbackCover(title);
+    ? `<img src="${cover}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="${googleCover ? `this.src='${googleCover}';this.onerror=function(){this.parentElement.innerHTML=fallbackCover('${title}')};` : `this.parentElement.innerHTML=fallbackCover('${title}');`}">`
+    : googleCover
+      ? `<img src="${googleCover}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="this.parentElement.innerHTML=fallbackCover('${title}')">`
+      : fallbackCover(title);
 
   return `
     <article class="flex flex-col gap-2">
