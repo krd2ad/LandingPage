@@ -23,36 +23,32 @@ async function loadReadingChallenge() {
 function renderReadingChallenge(data) {
   const section = document.getElementById("reading-challenge-widget");
   const books = Array.isArray(data.books) ? data.books : [];
+  const pct = Math.min(100, Math.round((data.count / data.goal) * 100));
 
   section.innerHTML = `
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-      <div>
-        <h2 class="text-2xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
-        <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight">📚 ${data.year} Reading Challenge</h2>
+          <p class="mt-1 text-base text-gray-600 dark:text-gray-300">
+            <span class="font-semibold text-gray-900 dark:text-gray-100">${data.count}</span>
+            <span class="text-gray-400"> / ${data.goal} books</span>
+          </p>
+        </div>
+        <p class="text-sm text-gray-400 dark:text-gray-500 sm:text-right">
           Updated ${formatUpdatedDate(data.updatedAt)}
-        </p>
-        <p class="mt-1 text-base text-gray-600 dark:text-gray-300">
-          <span class="font-semibold text-gray-900 dark:text-gray-100">${data.count} out of ${data.goal}</span> books completed
         </p>
       </div>
 
-      <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <div class="mb-6">
-          <div class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1">
-            <span class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-300">
-              Recently Finished
-            </span>
-          </div>
-          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
-            Books completed in ${data.year}, newest first.
-          </p>
+      <div class="mt-4">
+        <div class="h-2 w-full rounded-full bg-gray-100 dark:bg-gray-700">
+          <div class="h-2 rounded-full bg-blue-500 transition-all" style="width:${pct}%"></div>
         </div>
+        <p class="mt-1 text-xs text-gray-400">${pct}% of goal</p>
+      </div>
 
-        <div class="rounded-2xl bg-gray-50 dark:bg-gray-900 p-4 md:p-5">
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            ${books.map(bookCard).join("")}
-          </div>
-        </div>
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        ${books.map(bookCard).join("")}
       </div>
     </div>
   `;
@@ -61,19 +57,34 @@ function renderReadingChallenge(data) {
 function bookCard(book) {
   const title = escapeHtml(book.title || "Untitled");
   const author = escapeHtml(book.author || "Unknown Author");
-  const finishedLabel = formatFinishedDate(book.dateRead || "");
-  const isbn = escapeHtml(book.isbn13 || book.isbn || "");
+  const cover = book.coverUrl || "";
+  const stars = book.rating ? "★".repeat(book.rating) + "☆".repeat(5 - book.rating) : "";
+  const month = book.dateRead
+    ? new Date(book.dateRead + "T00:00:00").toLocaleDateString(undefined, { month: "short", year: "numeric" })
+    : "";
+
+  const coverHtml = cover
+    ? `<img src="${cover}" alt="${title}" class="w-full h-full object-cover" loading="lazy" onerror="this.parentElement.innerHTML=fallbackCover('${title}')">`
+    : fallbackCover(title);
 
   return `
-    <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5">
-      <h4 class="text-lg font-semibold leading-snug break-words">${title}</h4>
-      <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">${author}</p>
-      <div class="mt-4 space-y-1">
-        <p class="text-sm text-gray-500 dark:text-gray-400">${finishedLabel}</p>
-        <p class="text-sm text-gray-500 dark:text-gray-400">ISBN: ${isbn || "Not available"}</p>
+    <article class="group flex flex-col gap-2">
+      <div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-sm">
+        ${coverHtml}
+      </div>
+      <div>
+        <p class="text-sm font-semibold leading-snug line-clamp-2 text-gray-900 dark:text-gray-100">${title}</p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate">${author}</p>
+        ${stars ? `<p class="text-xs text-amber-400 mt-0.5 tracking-tight">${stars}</p>` : ""}
+        ${month ? `<p class="text-xs text-gray-400 mt-0.5">${month}</p>` : ""}
       </div>
     </article>
   `;
+}
+
+function fallbackCover(title) {
+  const initial = String(title).trim()[0] || "?";
+  return `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-gray-400 dark:text-gray-500 select-none">${escapeHtml(initial)}</div>`;
 }
 
 function formatFinishedDate(dateStr) {
