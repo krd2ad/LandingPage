@@ -1,10 +1,49 @@
 {
   "year": 2026,
   "goal": 24,
-  "count": 18,
-  "percent": 75,
-  "updatedAt": "2026-05-29T16:59:23.418Z",
+  "count": 21,
+  "percent": 88,
+  "updatedAt": "2026-06-03T17:51:17.130Z",
   "books": [
+    {
+      "title": "More Money Than God: Hedge Funds and the Making of a New Elite",
+      "author": "Sebastian Mallaby",
+      "dateRead": "2026-05-17",
+      "rating": 3,
+      "averageRating": 0,
+      "pages": 496,
+      "yearPublished": 2010,
+      "isbn": "1594202559",
+      "isbn13": "9781594202551",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781594202551-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams and Reaching Your Destiny",
+      "author": "Robin Sharma",
+      "dateRead": "2026-05-11",
+      "rating": 0,
+      "averageRating": 0,
+      "pages": 208,
+      "yearPublished": 1999,
+      "isbn": "0062515675",
+      "isbn13": "9780062515674",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062515674-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "Measure What Matters",
+      "author": "John Doerr",
+      "dateRead": "2026-05-09",
+      "rating": 2,
+      "averageRating": 0,
+      "pages": 299,
+      "yearPublished": 2018,
+      "isbn": "",
+      "isbn13": "",
+      "coverUrl": "",
+      "source": "goodreads"
+    },
     {
       "title": "Nunaga: Ten Years Among the Eskimos",
       "author": "Duncan Pryde",
@@ -84,19 +123,6 @@
       "source": "goodreads"
     },
     {
-      "title": "One Day, Everyone Will Have Always Been Against This",
-      "author": "Omar El Akkad",
-      "dateRead": "2026-03-25",
-      "rating": 3,
-      "averageRating": 0,
-      "pages": 208,
-      "yearPublished": 2025,
-      "isbn": "0593804147",
-      "isbn13": "9780593804148",
-      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593804148-L.jpg",
-      "source": "goodreads"
-    },
-    {
       "title": "When Breath Becomes Air",
       "author": "Paul Kalanithi",
       "dateRead": "2026-03-25",
@@ -107,6 +133,19 @@
       "isbn": "0812988418",
       "isbn13": "9780812988413",
       "coverUrl": "https://covers.openlibrary.org/b/isbn/9780812988413-L.jpg",
+      "source": "goodreads"
+    },
+    {
+      "title": "One Day, Everyone Will Have Always Been Against This",
+      "author": "Omar El Akkad",
+      "dateRead": "2026-03-25",
+      "rating": 3,
+      "averageRating": 0,
+      "pages": 208,
+      "yearPublished": 2025,
+      "isbn": "0593804147",
+      "isbn13": "9780593804148",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593804148-L.jpg",
       "source": "goodreads"
     },
     {
